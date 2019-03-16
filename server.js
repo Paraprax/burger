@@ -28,6 +28,6 @@ app.use(routes);
 app.listen(PORT, function() {
     // && logs (server-side) when our server has started
     console.log("Green light! Server listening on: http://localhost:" + PORT);
-  });
+});
 
 //"End" of our entire app.

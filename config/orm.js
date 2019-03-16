@@ -6,9 +6,8 @@ var connection = require("../config/connection.js");
 //~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 function printQMarks (num) {
     var arr = [];
-
     for (var i = 0; i < num; i++) {
-    arr.push("?");
+        arr.push("?");
     }
     return arr.toString();
 }
@@ -43,10 +42,11 @@ var orm = {
         var queryString = "SELECT * FROM " + tableInput + ";";
         //hit the db with our query:
         connection.query(queryString, function(err, result) {
-        if (err) {
-            throw err;
-        }
-        cb(result);
+            if (err) {
+                throw err;
+            }
+            
+            cb(result);
         });
         console.log("Select all burgers"); //shows the overall function ran
     },
@@ -65,10 +65,10 @@ var orm = {
         
         //hit the db with our query:
         connection.query(queryString, vals, function(err, result) {
-          if (err) {
-            throw err;
-          }
-          cb(result);
+            if (err) {
+                throw err;
+            }
+            cb(result);
         });
         console.log("Add a burger"); //shows the overall function ran
     },
@@ -85,10 +85,10 @@ var orm = {
 
         //hit the db with our query:
         connection.query(queryString, function(err, result) {
-          if (err) {
-            throw err;
-          }
-          cb(result);
+            if (err) {
+                throw err;
+            }
+            cb(result);
         });
         console.log("Update a burger");
     }

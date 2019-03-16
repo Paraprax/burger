@@ -34,16 +34,15 @@ router.put("/api/burgers/:id", function(req, res) {
     console.log("condition", condition);
   
     burger.update({
-      devoured: req.body.devoured
+        devoured: req.body.devoured
     }, condition, function(result) {
-      if (result.changedRows == 0) {
-        // if no rows were changed, then the ID must not exist here, so 404
-        return res.status(404).end();
-      } else {
-        res.status(200).end(); //200-OK if good
-      }
+        if (result.changedRows == 0) { 
+            return res.status(404).end();//<- 404 out if no rows have changed, because the id wasn't found in the db
+        } else {
+            res.status(200).end(); //200-OK if good
+        }
     });
-  });
+});
 
 //export the router for the server in server.js to access:
 module.exports = router;
