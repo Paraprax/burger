@@ -33,7 +33,7 @@ $(function() {
         //creates a new burger object with the user-submitted name, set to uneaten by default:
         var newBurger = {
             burger_name: $("#burg").val().trim(),
-            devoured: false
+            devoured: 0 //<- note: using '0' for a 'false' boolean as it requires an integer value
         };
 
         //sends the POST request containing our newBurger object:
@@ -42,7 +42,7 @@ $(function() {
             data: newBurger
         }).then(
             function() {
-                console.log("Whipped up a new burger!")
+                console.log("Whipped up a new burger!");
                 //reloads the page to update the burger menu with the new data:
                 location.reload();
             }
