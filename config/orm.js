@@ -34,19 +34,62 @@ function objToSql(ob) {
 }
 // - - - - - - - - - - - - - - - - - - -
 
+//on to the actual ORM....
 
 //ORM object for functions running sql-statement queries:
 var orm = {
-    selectAll: function() {
-        console.log("Select all burgers");
+    selectAll: function(tableInput, cb) {
+        //build the query string:
+        var queryString = "SELECT * FROM " + tableInput + ";";
+        //hit the db with our query:
+        connection.query(queryString, function(err, result) {
+        if (err) {
+            throw err;
+        }
+        cb(result);
+        });
+        console.log("Select all burgers"); //shows the overall function ran
     },
-    insertOne: function() {
-        console.log("Add a new burger");
+    insertOne: function(table, columns, vals, cb) {
+        //build the query string:
+        var queryString = "INSERT INTO " + table;
+    
+        queryString += " (";
+        queryString += columns.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += printQMarks(vals.length);
+        queryString += ") ";
+    
+        console.log(queryString);
+        
+        //hit the db with our query:
+        connection.query(queryString, vals, function(err, result) {
+          if (err) {
+            throw err;
+          }
+          cb(result);
+        });
+        console.log("Add a burger"); //shows the overall function ran
     },
-    updateOne: function() {
+    updateOne: function(table, objColVals, condition, cb) {
+        var queryString = "UPDATE " + table;
+    
+        queryString += " SET ";
+        queryString += objToSql(objColVals);
+        queryString += " WHERE ";
+        queryString += condition;
+    
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+          cb(result);
+        });
         console.log("Update a burger");
     }
-}; //TODO give the above more functionality
+};
 
 // exports the ORM object for the burger.js model to access:
 module.exports = orm;
