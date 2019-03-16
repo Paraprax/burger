@@ -2,7 +2,7 @@
 var orm = require("../config/orm.js");
 
 var burger = {
-    all: function() { //our "read" method, CRUDwise
+    all: function(cb) { //our "read" method, CRUDwise
         orm.selectAll("burgers", function(res) {
             cb(res);
         });
