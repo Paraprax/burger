@@ -16,6 +16,11 @@ h1 {
     margin-top: 0; 
 }
 
+/* #reset-burgers {
+    display: block;
+    margin: 0 auto;
+} */
+
 #wrap {
     margin: 0 auto;
     max-width: 800px;
