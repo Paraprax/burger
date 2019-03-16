@@ -1,7 +1,9 @@
 <li>
     {{burger_name}}
 
-    <button class="change-ate" data-id="{{id}}" data-newdevour="{{devour}}">
-        {{#if devour}}EAT ME! {{else}} MAKE ME! {{/if}}
-    </button>
+    {{#if devour}} {{!-- button only appears if burger is yet-uneaten --}}
+        <button class="change-ate" data-id="{{id}}" data-newdevour="{{devour}}">
+            EAT ME!
+        </button>
+    {{/if}}
 </li>
