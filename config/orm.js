@@ -73,6 +73,7 @@ var orm = {
         console.log("Add a burger"); //shows the overall function ran
     },
     updateOne: function(table, objColVals, condition, cb) {
+        //build the query string:
         var queryString = "UPDATE " + table;
     
         queryString += " SET ";
@@ -81,6 +82,8 @@ var orm = {
         queryString += condition;
     
         console.log(queryString);
+
+        //hit the db with our query:
         connection.query(queryString, function(err, result) {
           if (err) {
             throw err;

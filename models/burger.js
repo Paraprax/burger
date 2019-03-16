@@ -3,17 +3,21 @@ var orm = require("../config/orm.js");
 
 var burger = {
     all: function() { //our "read" method, CRUDwise
-        orm.selectAll();
+        orm.selectAll("burgers", function(res) {
+            cb(res);
+        });
     },
-    create: function() {
-        orm.insertOne();
+    create: function(columns, values, cb) {
+        orm.insertOne("burgers", columns, values, function(res) {
+            cb(res);
+        });
     },
-    update: function() {
-        orm.updateOne();
+    update: function(objColVals, condition, cb) {
+        orm.updateOne("burgers", objColVals, condition, function(res) {
+            cb(res);
+        });
     }
 };
-
-burger.update();
 
 //export for access by the burgerController.js:
 module.exports = burger;
