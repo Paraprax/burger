@@ -17,7 +17,7 @@ app.use(express.json());
 
 //sets handlebars as the default templating engine:
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view enginge", "handlebars");
+app.set("view engine", "handlebars");
 
 /* imports our routes from burgerController.js
 and gives the server access to them:*/
