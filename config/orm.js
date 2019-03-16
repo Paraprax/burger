@@ -12,7 +12,7 @@ var orm = {
     updateOne: function() {
         console.log("Update a burger");
     }
-};
+}; //TODO give the above more functionality
 
 // exports the ORM object for the burger.js model to access:
 module.exports = orm;
